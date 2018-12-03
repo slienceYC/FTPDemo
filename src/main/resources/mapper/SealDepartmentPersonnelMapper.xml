@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dhht.ftp.dao.SealDepartmentPersonnelMapper" >
+  <resultMap id="BaseResultMap" type="com.dhht.ftp.model.SealDepartmentPersonnel" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="department_code" property="departmentCode" jdbcType="CHAR" />
+    <result column="department_name" property="departmentName" jdbcType="VARCHAR" />
+    <result column="person_type" property="personType" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="id_crad_type" property="idCradType" jdbcType="VARCHAR" />
+    <result column="id_card_no" property="idCardNo" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="telphone" property="telphone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="investment_time" property="investmentTime" jdbcType="TIMESTAMP" />
+    <result column="investment_style" property="investmentStyle" jdbcType="VARCHAR" />
+    <result column="subscribed_capital" property="subscribedCapital" jdbcType="VARCHAR" />
+    <result column="investment_rate" property="investmentRate" jdbcType="VARCHAR" />
+    <result column="nationality" property="nationality" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, department_code, department_name, person_type, name, id_crad_type, id_card_no, 
+    phone, telphone, email, investment_time, investment_style, subscribed_capital, investment_rate, 
+    nationality
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from seal_department_personnel
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from seal_department_personnel
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dhht.ftp.model.SealDepartmentPersonnel" >
+    insert into seal_department_personnel (id, department_code, department_name, 
+      person_type, name, id_crad_type, 
+      id_card_no, phone, telphone, 
+      email, investment_time, investment_style, 
+      subscribed_capital, investment_rate, nationality
+      )
+    values (#{id,jdbcType=CHAR}, #{departmentCode,jdbcType=CHAR}, #{departmentName,jdbcType=VARCHAR}, 
+      #{personType,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{idCradType,jdbcType=VARCHAR}, 
+      #{idCardNo,jdbcType=CHAR}, #{phone,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{investmentTime,jdbcType=TIMESTAMP}, #{investmentStyle,jdbcType=VARCHAR}, 
+      #{subscribedCapital,jdbcType=VARCHAR}, #{investmentRate,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dhht.ftp.model.SealDepartmentPersonnel" >
+    insert into seal_department_personnel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="departmentCode != null" >
+        department_code,
+      </if>
+      <if test="departmentName != null" >
+        department_name,
+      </if>
+      <if test="personType != null" >
+        person_type,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="idCradType != null" >
+        id_crad_type,
+      </if>
+      <if test="idCardNo != null" >
+        id_card_no,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="telphone != null" >
+        telphone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="investmentTime != null" >
+        investment_time,
+      </if>
+      <if test="investmentStyle != null" >
+        investment_style,
+      </if>
+      <if test="subscribedCapital != null" >
+        subscribed_capital,
+      </if>
+      <if test="investmentRate != null" >
+        investment_rate,
+      </if>
+      <if test="nationality != null" >
+        nationality,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="departmentCode != null" >
+        #{departmentCode,jdbcType=CHAR},
+      </if>
+      <if test="departmentName != null" >
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null" >
+        #{personType,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idCradType != null" >
+        #{idCradType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        #{idCardNo,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="investmentTime != null" >
+        #{investmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="investmentStyle != null" >
+        #{investmentStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribedCapital != null" >
+        #{subscribedCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="investmentRate != null" >
+        #{investmentRate,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dhht.ftp.model.SealDepartmentPersonnel" >
+    update seal_department_personnel
+    <set >
+      <if test="departmentCode != null" >
+        department_code = #{departmentCode,jdbcType=CHAR},
+      </if>
+      <if test="departmentName != null" >
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null" >
+        person_type = #{personType,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idCradType != null" >
+        id_crad_type = #{idCradType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        id_card_no = #{idCardNo,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="investmentTime != null" >
+        investment_time = #{investmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="investmentStyle != null" >
+        investment_style = #{investmentStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribedCapital != null" >
+        subscribed_capital = #{subscribedCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="investmentRate != null" >
+        investment_rate = #{investmentRate,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dhht.ftp.model.SealDepartmentPersonnel" >
+    update seal_department_personnel
+    set department_code = #{departmentCode,jdbcType=CHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      person_type = #{personType,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      id_crad_type = #{idCradType,jdbcType=VARCHAR},
+      id_card_no = #{idCardNo,jdbcType=CHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      investment_time = #{investmentTime,jdbcType=TIMESTAMP},
+      investment_style = #{investmentStyle,jdbcType=VARCHAR},
+      subscribed_capital = #{subscribedCapital,jdbcType=VARCHAR},
+      investment_rate = #{investmentRate,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

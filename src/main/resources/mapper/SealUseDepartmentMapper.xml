@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dhht.ftp.dao.SealUseDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.dhht.ftp.model.SealUseDepartment" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="use_department_code" property="useDepartmentCode" jdbcType="CHAR" />
+    <result column="use_department_name" property="useDepartmentName" jdbcType="VARCHAR" />
+    <result column="nation_name" property="nationName" jdbcType="VARCHAR" />
+    <result column="english_name" property="englishName" jdbcType="VARCHAR" />
+    <result column="department_type" property="departmentType" jdbcType="CHAR" />
+    <result column="district_id" property="districtId" jdbcType="CHAR" />
+    <result column="telphone" property="telphone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="postal_code" property="postalCode" jdbcType="VARCHAR" />
+    <result column="department_status" property="departmentStatus" jdbcType="CHAR" />
+    <result column="idcard_reverse_id" property="idcardReverseId" jdbcType="VARCHAR" />
+    <result column="idcard_front_id" property="idcardFrontId" jdbcType="VARCHAR" />
+    <result column="business_license_id" property="businessLicenseId" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="found_date" property="foundDate" jdbcType="TIMESTAMP" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="registration_department" property="registrationDepartment" jdbcType="VARCHAR" />
+    <result column="management_range" property="managementRange" jdbcType="VARCHAR" />
+    <result column="registered_capital" property="registeredCapital" jdbcType="VARCHAR" />
+    <result column="special_business_licence_scanning" property="specialBusinessLicenceScanning" jdbcType="VARCHAR" />
+    <result column="use_department_tax_no" property="useDepartmentTaxNo" jdbcType="CHAR" />
+    <result column="is_record" property="isRecord" jdbcType="BIT" />
+    <result column="is_permission" property="isPermission" jdbcType="BIT" />
+    <result column="operating_period" property="operatingPeriod" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="currency_amount" property="currencyAmount" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, use_department_code, use_department_name, nation_name, english_name, department_type, 
+    district_id, telphone, address, postal_code, department_status, idcard_reverse_id, 
+    idcard_front_id, business_license_id, is_delete, version, flag, updateTime, found_date, 
+    start_date, end_date, registration_department, management_range, registered_capital, 
+    special_business_licence_scanning, use_department_tax_no, is_record, is_permission, 
+    operating_period, currency, currency_amount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from seal_use_department
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from seal_use_department
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dhht.ftp.model.SealUseDepartment" >
+    insert into seal_use_department (id, use_department_code, use_department_name, 
+      nation_name, english_name, department_type, 
+      district_id, telphone, address, 
+      postal_code, department_status, idcard_reverse_id, 
+      idcard_front_id, business_license_id, is_delete, 
+      version, flag, updateTime, 
+      found_date, start_date, end_date, 
+      registration_department, management_range, 
+      registered_capital, special_business_licence_scanning, 
+      use_department_tax_no, is_record, is_permission, 
+      operating_period, currency, currency_amount
+      )
+    values (#{id,jdbcType=CHAR}, #{useDepartmentCode,jdbcType=CHAR}, #{useDepartmentName,jdbcType=VARCHAR}, 
+      #{nationName,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{departmentType,jdbcType=CHAR}, 
+      #{districtId,jdbcType=CHAR}, #{telphone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{postalCode,jdbcType=VARCHAR}, #{departmentStatus,jdbcType=CHAR}, #{idcardReverseId,jdbcType=VARCHAR}, 
+      #{idcardFrontId,jdbcType=VARCHAR}, #{businessLicenseId,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT}, 
+      #{version,jdbcType=INTEGER}, #{flag,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{foundDate,jdbcType=TIMESTAMP}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{registrationDepartment,jdbcType=VARCHAR}, #{managementRange,jdbcType=VARCHAR}, 
+      #{registeredCapital,jdbcType=VARCHAR}, #{specialBusinessLicenceScanning,jdbcType=VARCHAR}, 
+      #{useDepartmentTaxNo,jdbcType=CHAR}, #{isRecord,jdbcType=BIT}, #{isPermission,jdbcType=BIT}, 
+      #{operatingPeriod,jdbcType=VARCHAR}, #{currency,jdbcType=VARCHAR}, #{currencyAmount,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dhht.ftp.model.SealUseDepartment" >
+    insert into seal_use_department
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="useDepartmentCode != null" >
+        use_department_code,
+      </if>
+      <if test="useDepartmentName != null" >
+        use_department_name,
+      </if>
+      <if test="nationName != null" >
+        nation_name,
+      </if>
+      <if test="englishName != null" >
+        english_name,
+      </if>
+      <if test="departmentType != null" >
+        department_type,
+      </if>
+      <if test="districtId != null" >
+        district_id,
+      </if>
+      <if test="telphone != null" >
+        telphone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postalCode != null" >
+        postal_code,
+      </if>
+      <if test="departmentStatus != null" >
+        department_status,
+      </if>
+      <if test="idcardReverseId != null" >
+        idcard_reverse_id,
+      </if>
+      <if test="idcardFrontId != null" >
+        idcard_front_id,
+      </if>
+      <if test="businessLicenseId != null" >
+        business_license_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="foundDate != null" >
+        found_date,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="registrationDepartment != null" >
+        registration_department,
+      </if>
+      <if test="managementRange != null" >
+        management_range,
+      </if>
+      <if test="registeredCapital != null" >
+        registered_capital,
+      </if>
+      <if test="specialBusinessLicenceScanning != null" >
+        special_business_licence_scanning,
+      </if>
+      <if test="useDepartmentTaxNo != null" >
+        use_department_tax_no,
+      </if>
+      <if test="isRecord != null" >
+        is_record,
+      </if>
+      <if test="isPermission != null" >
+        is_permission,
+      </if>
+      <if test="operatingPeriod != null" >
+        operating_period,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="currencyAmount != null" >
+        currency_amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="useDepartmentCode != null" >
+        #{useDepartmentCode,jdbcType=CHAR},
+      </if>
+      <if test="useDepartmentName != null" >
+        #{useDepartmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="nationName != null" >
+        #{nationName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentType != null" >
+        #{departmentType,jdbcType=CHAR},
+      </if>
+      <if test="districtId != null" >
+        #{districtId,jdbcType=CHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postalCode != null" >
+        #{postalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentStatus != null" >
+        #{departmentStatus,jdbcType=CHAR},
+      </if>
+      <if test="idcardReverseId != null" >
+        #{idcardReverseId,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardFrontId != null" >
+        #{idcardFrontId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseId != null" >
+        #{businessLicenseId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="foundDate != null" >
+        #{foundDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registrationDepartment != null" >
+        #{registrationDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="managementRange != null" >
+        #{managementRange,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="specialBusinessLicenceScanning != null" >
+        #{specialBusinessLicenceScanning,jdbcType=VARCHAR},
+      </if>
+      <if test="useDepartmentTaxNo != null" >
+        #{useDepartmentTaxNo,jdbcType=CHAR},
+      </if>
+      <if test="isRecord != null" >
+        #{isRecord,jdbcType=BIT},
+      </if>
+      <if test="isPermission != null" >
+        #{isPermission,jdbcType=BIT},
+      </if>
+      <if test="operatingPeriod != null" >
+        #{operatingPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyAmount != null" >
+        #{currencyAmount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dhht.ftp.model.SealUseDepartment" >
+    update seal_use_department
+    <set >
+      <if test="useDepartmentCode != null" >
+        use_department_code = #{useDepartmentCode,jdbcType=CHAR},
+      </if>
+      <if test="useDepartmentName != null" >
+        use_department_name = #{useDepartmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="nationName != null" >
+        nation_name = #{nationName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        english_name = #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentType != null" >
+        department_type = #{departmentType,jdbcType=CHAR},
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId,jdbcType=CHAR},
+      </if>
+      <if test="telphone != null" >
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postalCode != null" >
+        postal_code = #{postalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentStatus != null" >
+        department_status = #{departmentStatus,jdbcType=CHAR},
+      </if>
+      <if test="idcardReverseId != null" >
+        idcard_reverse_id = #{idcardReverseId,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardFrontId != null" >
+        idcard_front_id = #{idcardFrontId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseId != null" >
+        business_license_id = #{businessLicenseId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="foundDate != null" >
+        found_date = #{foundDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registrationDepartment != null" >
+        registration_department = #{registrationDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="managementRange != null" >
+        management_range = #{managementRange,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="specialBusinessLicenceScanning != null" >
+        special_business_licence_scanning = #{specialBusinessLicenceScanning,jdbcType=VARCHAR},
+      </if>
+      <if test="useDepartmentTaxNo != null" >
+        use_department_tax_no = #{useDepartmentTaxNo,jdbcType=CHAR},
+      </if>
+      <if test="isRecord != null" >
+        is_record = #{isRecord,jdbcType=BIT},
+      </if>
+      <if test="isPermission != null" >
+        is_permission = #{isPermission,jdbcType=BIT},
+      </if>
+      <if test="operatingPeriod != null" >
+        operating_period = #{operatingPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyAmount != null" >
+        currency_amount = #{currencyAmount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dhht.ftp.model.SealUseDepartment" >
+    update seal_use_department
+    set use_department_code = #{useDepartmentCode,jdbcType=CHAR},
+      use_department_name = #{useDepartmentName,jdbcType=VARCHAR},
+      nation_name = #{nationName,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      department_type = #{departmentType,jdbcType=CHAR},
+      district_id = #{districtId,jdbcType=CHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postal_code = #{postalCode,jdbcType=VARCHAR},
+      department_status = #{departmentStatus,jdbcType=CHAR},
+      idcard_reverse_id = #{idcardReverseId,jdbcType=VARCHAR},
+      idcard_front_id = #{idcardFrontId,jdbcType=VARCHAR},
+      business_license_id = #{businessLicenseId,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      version = #{version,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      found_date = #{foundDate,jdbcType=TIMESTAMP},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      registration_department = #{registrationDepartment,jdbcType=VARCHAR},
+      management_range = #{managementRange,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      special_business_licence_scanning = #{specialBusinessLicenceScanning,jdbcType=VARCHAR},
+      use_department_tax_no = #{useDepartmentTaxNo,jdbcType=CHAR},
+      is_record = #{isRecord,jdbcType=BIT},
+      is_permission = #{isPermission,jdbcType=BIT},
+      operating_period = #{operatingPeriod,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      currency_amount = #{currencyAmount,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

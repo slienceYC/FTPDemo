@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dhht.ftp.dao.SealBranchOfficeMapper" >
+  <resultMap id="BaseResultMap" type="com.dhht.ftp.model.SealBranchOffice" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="branch_office_code" property="branchOfficeCode" jdbcType="CHAR" />
+    <result column="branch_office_name" property="branchOfficeName" jdbcType="VARCHAR" />
+    <result column="superior_department_code" property="superiorDepartmentCode" jdbcType="CHAR" />
+    <result column="superior_department_name" property="superiorDepartmentName" jdbcType="VARCHAR" />
+    <result column="liaison_man_name" property="liaisonManName" jdbcType="VARCHAR" />
+    <result column="liaison_man_phone" property="liaisonManPhone" jdbcType="VARCHAR" />
+    <result column="liaison_man_id_type" property="liaisonManIdType" jdbcType="VARCHAR" />
+    <result column="liaison_man_id_no" property="liaisonManIdNo" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, branch_office_code, branch_office_name, superior_department_code, superior_department_name, 
+    liaison_man_name, liaison_man_phone, liaison_man_id_type, liaison_man_id_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from seal_branch_office
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from seal_branch_office
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dhht.ftp.model.SealBranchOffice" >
+    insert into seal_branch_office (id, branch_office_code, branch_office_name, 
+      superior_department_code, superior_department_name, 
+      liaison_man_name, liaison_man_phone, liaison_man_id_type, 
+      liaison_man_id_no)
+    values (#{id,jdbcType=CHAR}, #{branchOfficeCode,jdbcType=CHAR}, #{branchOfficeName,jdbcType=VARCHAR}, 
+      #{superiorDepartmentCode,jdbcType=CHAR}, #{superiorDepartmentName,jdbcType=VARCHAR}, 
+      #{liaisonManName,jdbcType=VARCHAR}, #{liaisonManPhone,jdbcType=VARCHAR}, #{liaisonManIdType,jdbcType=VARCHAR}, 
+      #{liaisonManIdNo,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dhht.ftp.model.SealBranchOffice" >
+    insert into seal_branch_office
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="branchOfficeCode != null" >
+        branch_office_code,
+      </if>
+      <if test="branchOfficeName != null" >
+        branch_office_name,
+      </if>
+      <if test="superiorDepartmentCode != null" >
+        superior_department_code,
+      </if>
+      <if test="superiorDepartmentName != null" >
+        superior_department_name,
+      </if>
+      <if test="liaisonManName != null" >
+        liaison_man_name,
+      </if>
+      <if test="liaisonManPhone != null" >
+        liaison_man_phone,
+      </if>
+      <if test="liaisonManIdType != null" >
+        liaison_man_id_type,
+      </if>
+      <if test="liaisonManIdNo != null" >
+        liaison_man_id_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="branchOfficeCode != null" >
+        #{branchOfficeCode,jdbcType=CHAR},
+      </if>
+      <if test="branchOfficeName != null" >
+        #{branchOfficeName,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorDepartmentCode != null" >
+        #{superiorDepartmentCode,jdbcType=CHAR},
+      </if>
+      <if test="superiorDepartmentName != null" >
+        #{superiorDepartmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManName != null" >
+        #{liaisonManName,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManPhone != null" >
+        #{liaisonManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManIdType != null" >
+        #{liaisonManIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManIdNo != null" >
+        #{liaisonManIdNo,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dhht.ftp.model.SealBranchOffice" >
+    update seal_branch_office
+    <set >
+      <if test="branchOfficeCode != null" >
+        branch_office_code = #{branchOfficeCode,jdbcType=CHAR},
+      </if>
+      <if test="branchOfficeName != null" >
+        branch_office_name = #{branchOfficeName,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorDepartmentCode != null" >
+        superior_department_code = #{superiorDepartmentCode,jdbcType=CHAR},
+      </if>
+      <if test="superiorDepartmentName != null" >
+        superior_department_name = #{superiorDepartmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManName != null" >
+        liaison_man_name = #{liaisonManName,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManPhone != null" >
+        liaison_man_phone = #{liaisonManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManIdType != null" >
+        liaison_man_id_type = #{liaisonManIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonManIdNo != null" >
+        liaison_man_id_no = #{liaisonManIdNo,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dhht.ftp.model.SealBranchOffice" >
+    update seal_branch_office
+    set branch_office_code = #{branchOfficeCode,jdbcType=CHAR},
+      branch_office_name = #{branchOfficeName,jdbcType=VARCHAR},
+      superior_department_code = #{superiorDepartmentCode,jdbcType=CHAR},
+      superior_department_name = #{superiorDepartmentName,jdbcType=VARCHAR},
+      liaison_man_name = #{liaisonManName,jdbcType=VARCHAR},
+      liaison_man_phone = #{liaisonManPhone,jdbcType=VARCHAR},
+      liaison_man_id_type = #{liaisonManIdType,jdbcType=VARCHAR},
+      liaison_man_id_no = #{liaisonManIdNo,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
